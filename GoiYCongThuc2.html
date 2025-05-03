@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Gợi ý công thức món ăn 2</title>
+</head>
+<body>
+    <a href="index.html" class="btn btn-outline-secondary btn-sm back-home-link">
+        Trang chủ
+    </a>
+
+    <div class="container-fluid">
+        <div class="header-section">
+            <h3>HUIT</h3>
+        </div>
+        <h1 class="hello-heading">Gợi ý công thức món ăn theo nhóm</h1>
+
+        <div class="cluster-selector">
+            <h5>Mỗi nhóm sẽ bao gồm các món ăn gần như có sự tương đồng về nguyên liệu</h5>
+            <div class="input-group mb-3 justify-content-center">
+                <label for="clusterSelect" class="col-form-label me-2">Chọn nhóm (1-20):</label>
+                <select id="clusterSelect" class="form-select me-2" style="max-width: 200px;">
+                    <option value="">-- Chọn nhóm --</option>
+                    <option value="1">Nhóm 1</option>
+                    <option value="2">Nhóm 2</option>
+                    <option value="3">Nhóm 3</option>
+                    <option value="4">Nhóm 4</option>
+                    <option value="5">Nhóm 5</option>
+                    <option value="6">Nhóm 6</option>
+                    <option value="7">Nhóm 7</option>
+                    <option value="8">Nhóm 8</option>
+                    <option value="9">Nhóm 9</option>
+                    <option value="10">Nhóm 10</option>
+                    <option value="11">Nhóm 11</option>
+                    <option value="12">Nhóm 12</option>
+                    <option value="13">Nhóm 13</option>
+                    <option value="14">Nhóm 14</option>
+                    <option value="15">Nhóm 15</option>
+                    <option value="16">Nhóm 16</option>
+                    <option value="17">Nhóm 17</option>
+                    <option value="18">Nhóm 18</option>
+                    <option value="19">Nhóm 19</option>
+                    <option value="20">Nhóm 20</option>
+                </select>
+                <button class="btn btn-outline-primary" id="moreClusterRecipesButton" disabled>Hiển thị thêm</button>
+            </div>
+            <div id="clusterRecipeCountInfo" class="text-center text-muted mt-2"></div>
+        </div>
+
+        <div id="clusterResultsGrid" class="cluster-results-grid">
+            <p class="col-12 text-center">Chọn một cụm từ danh sách để xem các món ăn tương đồng.</p>
+        </div>
+    </div>
+
+    <div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="recipeModalLabel">Món ăn #ID</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="recipeModalBody"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="xuly1.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Xây dựng thực đơn</title>
+</head>
+<body>
+    <a href="index.html" class="btn btn-outline-secondary btn-sm back-home-link">
+        Trang chủ
+    </a>
+
+    <div class="container-fluid">
+        <div class="header-section">
+            <h3>HUIT</h3>
+        </div>
+        <h1 class="hello-heading">Xây dựng thực đơn</h1>
+
+        <div class="season-selector">
+            <h2>Chọn mùa:</h2>
+            <button class="btn btn-outline-primary" data-season="Mùa nóng">Mùa nóng</button>
+            <button class="btn btn-outline-primary" data-season="Mùa lạnh">Mùa lạnh</button>
+            <button class="btn btn-outline-primary" data-season="Quanh năm">Quanh năm</button>
+        </div>
+
+        <div id="seasonalResultsGrid" class="seasonal-results-grid"></div>
+    </div>
+
+    <div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="recipeModalLabel">Món ăn #ID</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="recipeModalBody"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="xuly3.js"></script>
+</body>
+</html>

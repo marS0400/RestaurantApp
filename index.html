@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Trang chủ</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="header-section">
+            <h3>HUIT</h3>
+        </div>
+        <h1 class="hello-heading">Xin chào</h1>
+        <div class="card-container-wrapper">
+            <div class="card-scroll-container" id="recipeCardsContainer"></div>
+        </div>
+
+        <div class="button-section row justify-content-center">
+            <div class="col-12 col-sm-auto mb-2 mb-sm-0">
+                <button class="btn btn-light action-button w-100 w-sm-auto" id="suggestRecipeButton">Gợi ý công thức món ăn</button>
+            </div>
+            <div class="col-12 col-sm-auto mb-2 mb-sm-0">
+                <button class="btn btn-light action-button w-100 w-sm-auto" id="suggestRecipeButton2">Gợi ý công thức món ăn 2</button>
+            </div>
+            <div class="col-12 col-sm-auto">
+                <button class="btn btn-light action-button w-100 w-sm-auto" id="buildMenuButton">Xây dựng thực đơn nhà hàng</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="recipeModalLabel">Món ăn #ID</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="recipeModalBody"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="xuly.js"></script>
+</body>
+</html>

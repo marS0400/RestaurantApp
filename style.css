@@ -1,0 +1,275 @@
+body {
+    background-color: #f0f0f0; /* Màu nền xám nhạt */
+    padding-top: 20px;
+}
+.header-section {
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+.hello-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+.back-home-link {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 100;
+}
+.card-container-wrapper {
+    overflow: hidden; /* Ẩn phần card bị tràn ra ngoài */
+    position: relative;
+    padding: 10px 0; /* Thêm padding trên dưới để card không bị sát mép */
+}
+.card-scroll-container {
+    display: flex;
+    /* Animation sẽ được gán bằng JS sau khi tính toán độ rộng */
+    animation-name: scroll-left;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+}
+.card-scroll-container:hover {
+    animation-play-state: paused; /* Dừng animation khi rê chuột qua */
+}
+
+/* Animation for scrolling (needs JS to set total width for @keyframes) */
+/* Example Keyframes, width will be calculated by JS */
+ @keyframes scroll-left {
+     0% { transform: translateX(0); }
+     100% { transform: translateX(var(--scroll-distance)); }
+ }
+
+
+.recipe-card {
+    flex: 0 0 auto; /* Quan trọng: Ngăn card co lại */
+    width: 250px; /* Chiều rộng cố định cho card */
+    margin-right: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden; /* Quan trọng để ellipsis hoạt động và nội dung không tràn */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+.results-grid .recipe-card {
+    margin-right: 0;
+    width: auto; /* Bỏ width cố định, để grid tự quản lý */
+}
+.card-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.card-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    white-space: nowrap; /* Ngăn tiêu đề quá dài xuống dòng */
+    overflow: hidden; /* Cắt bớt phần tràn */
+    text-overflow: ellipsis; /* Thêm ... vào phần bị cắt */
+    cursor: pointer;
+}
+.ingredient-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+    flex-grow: 1; /* Choán hết không gian còn lại */
+    overflow: hidden; /* Quan trọng để ẩn các li bị cắt bớt */
+}
+.ingredient-list li {
+     white-space: nowrap; /* Ngăn tên nguyên liệu xuống dòng */
+     overflow: hidden; /* Cắt bớt phần tràn */
+     text-overflow: ellipsis; /* Thêm ... vào phần bị cắt */
+     margin-bottom: 4px;
+     line-height: 1.2;
+}
+.ingredient-list li:last-child {
+    margin-bottom: 0;
+}
+
+.button-section {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.action-button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 20px;
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    background-color: black;
+    background-size: 200% auto;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.action-button:hover {
+    background-position: right center;
+    box-shadow: 0 0 20px rgba(161, 196, 253, 0.7);
+    transform: translateY(-2px);
+}
+
+.action-button:active {
+    transform: translateY(5px);
+    box-shadow: 0 0 10px rgba(161, 196, 253, 0.5);
+    outline: none;
+}
+
+.suggestion-input-section {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative; /* Đặt vị trí tương đối cho cha để dropdown tuyệt đối nằm trong nó */
+    z-index: 2; /* Đảm bảo input section nổi lên trên các phần khác nếu cần */
+}
+ .suggestion-input-section h2 {
+     font-size: 1.5rem;
+     margin-bottom: 20px;
+     text-align: center;
+ }
+
+.ingredient-tag-input-area {
+    display: flex; /* Sử dụng flexbox để các tag và input nằm trên cùng dòng */
+    flex-wrap: wrap; /* Cho phép các tag xuống dòng khi hết chỗ */
+    align-items: center; /* Căn giữa các mục theo chiều dọc */
+    /* Kế thừa border, padding, background từ form-control */
+    min-height: calc(1.5em + 0.75rem + 2px); /* Chiều cao tối thiểu giống form-control */
+    cursor: text; /* Đổi con trỏ thành văn bản khi rê chuột */
+}
+
+/* Style cho dropdown gợi ý/autocomplete */
+.suggestions-dropdown {
+    position: absolute; /* Quan trọng để nó nổi lên */
+    z-index: 100; /* Đảm bảo nó nằm trên các phần tử khác */
+    width: calc(100% - 40px); /* Rộng bằng input group (trừ padding 20px mỗi bên của suggestion-input-section) */
+    left: 20px; /* Căn lề trái bằng padding */
+    right: 20px; /* Căn lề phải bằng padding */
+    /* top: ; */ /* Vị trí top sẽ do JS tính toán hoặc dựa vào luồng document nếu không set top */
+    /* Thường đặt ngay sau input trong HTML và dùng position: absolute; trong cha relative */
+
+
+    max-height: 150px; /* Chiều cao tối đa, thêm cuộn nếu nhiều */
+    overflow-y: auto; /* Thêm thanh cuộn dọc */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none; /* Không có border trên */
+    border-radius: 0 0 4px 4px; /* Bo tròn góc dưới */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: none; /* Mặc định ẩn */
+}
+
+.suggestions-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.suggestions-dropdown li {
+    padding: 8px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.suggestions-dropdown li:last-child {
+    border-bottom: none;
+}
+
+.suggestions-dropdown li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Style cho khu vực hiển thị gợi ý nguyên liệu từ luật kết hợp */
+#suggestedIngredientsDisplay {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #555;
+    min-height: 1.2em; /* Đảm bảo có không gian ngay cả khi trống */
+}
+#suggestedIngredientsDisplay span {
+     font-weight: bold;
+     margin-right: 5px;
+}
+#suggestedIngredientsDisplay ul {
+     list-style: none;
+     padding: 0;
+     margin: 5px 0 0 0;
+     /* display: inline; */ /* Bỏ inline display để mỗi li là một block tag */
+}
+#suggestedIngredientsDisplay li {
+     display: inline-block; /* Hiển thị như các tag */
+     background-color: #e9e9e9;
+     border-radius: 15px;
+     padding: 3px 10px;
+     margin: 3px;
+     word-break: break-word; /* Cho phép ngắt dòng nếu tag quá dài */
+     white-space: normal; /* Cho phép ngắt dòng */
+}
+
+
+/* Style cho khu vực hiển thị kết quả công thức (GoiYCongThuc.html) */
+.results-section {
+    margin-top: 30px;
+}
+.results-grid {
+    display: grid;
+    gap: 20px; /* Khoảng cách giữa các card */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Card rộng tối thiểu 250px, tự lấp đầy hàng */
+}
+
+.season-selector {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.season-selector .btn {
+    margin: 0 10px; /* Khoảng cách giữa các nút chọn mùa */
+}
+.seasonal-results-grid {
+    margin-top: 20px;
+    display: grid;
+    gap: 20px; /* Khoảng cách giữa các card */
+    /* Định nghĩa grid columns responsive */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Card rộng tối thiểu 250px, tự lấp đầy hàng */
+}
+
+.cluster-selector {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.cluster-selector label {
+    margin-right: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.cluster-selector select {
+    display: inline-block; /* Đảm bảo select nằm trên cùng dòng */
+    width: auto; /* Chỉ rộng bằng nội dung */
+    min-width: 150px; /* Chiều rộng tối thiểu */
+}
+
+.cluster-results-grid {
+    margin-top: 20px;
+    display: grid;
+    gap: 20px; /* Khoảng cách giữa các card */
+    /* Định nghĩa grid columns responsive */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Card rộng tối thiểu 250px, tự lấp đầy hàng */
+    justify-items: center;
+}

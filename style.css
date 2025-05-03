@@ -46,6 +46,7 @@ body {
 
 .recipe-card {
     flex: 0 0 auto; /* Quan trọng: Ngăn card co lại */
+    flex-shrink: 0;
     width: 250px; /* Chiều rộng cố định cho card */
     margin-right: 15px;
     border: 1px solid #ddd;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,22 +8,44 @@
     <link rel="stylesheet" href="style.css">
     <title>Gợi ý công thức món ăn 2</title>
 </head>
+
 <body>
-    <a href="index.html" class="btn btn-outline-secondary btn-sm back-home-link">
-        Trang chủ
-    </a>
-
-    <div class="container-fluid">
-        <div class="header-section">
-            <h3>HUIT</h3>
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand brand-logo" href="index.html">HUIT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="GoiYCongThuc.html">Gợi ý món ăn 1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="GoiYCongThuc2.html">Gợi ý món ăn 2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="XayDungThucDon.html">Thực đơn theo mùa</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <h1 class="hello-heading">Gợi ý công thức món ăn theo nhóm</h1>
+    </nav>
 
-        <div class="cluster-selector">
-            <h5>Mỗi nhóm sẽ bao gồm các món ăn gần như có sự tương đồng về nguyên liệu</h5>
-            <div class="input-group mb-3 justify-content-center">
+    <main class="container-fluid py-5">
+        <header class="header-section text-center mb-5">
+            <h1 class="hello-heading">Gợi ý công thức món ăn theo nhóm</h1>
+        </header>
+        <section class="container cluster-selector-section">
+            <h5 class="text-center mb-4" style="color: var(--text-muted);">Mỗi nhóm sẽ bao gồm các món ăn gần như có sự
+                tương đồng về nguyên liệu</h5>
+            <div class="input-group mb-3 justify-content-center custom-cluster-input-group">
                 <label for="clusterSelect" class="col-form-label me-2">Chọn nhóm (1-20):</label>
-                <select id="clusterSelect" class="form-select me-2" style="max-width: 200px;">
+                <select id="clusterSelect" class="form-select custom-select me-2">
                     <option value="">-- Chọn nhóm --</option>
                     <option value="1">Nhóm 1</option>
                     <option value="2">Nhóm 2</option>
@@ -45,21 +68,26 @@
                     <option value="19">Nhóm 19</option>
                     <option value="20">Nhóm 20</option>
                 </select>
-                <button class="btn btn-outline-primary" id="moreClusterRecipesButton" disabled>Hiển thị thêm</button>
+                <button class="btn btn-outline-primary custom-button" id="moreClusterRecipesButton" disabled>Hiển thị
+                    thêm</button>
             </div>
             <div id="clusterRecipeCountInfo" class="text-center text-muted mt-2"></div>
-        </div>
-
-        <div id="clusterResultsGrid" class="cluster-results-grid">
-            <p class="col-12 text-center">Chọn một cụm từ danh sách để xem các món ăn tương đồng.</p>
-        </div>
-    </div>
+        </section>
+        <section class="container cluster-results-section">
+            <h2 class="text-center mb-4" style="color: var(--primary-dark);">Món ăn trong nhóm đã chọn:</h2>
+            <div id="clusterResultsGrid" class="cluster-results-grid results-grid">
+                <p class="col-12 text-center" style="color: var(--text-muted);">Chọn một nhóm từ danh sách để xem các
+                    món ăn tương đồng.</p>
+            </div>
+        </section>
+    </main>
 
     <div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="recipeModalLabel">Món ăn #ID</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="recipeModalLabel">Món ăn #ID</h5> <button type="button"
+                        class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="recipeModalBody"></div>
                 <div class="modal-footer">
@@ -68,8 +96,9 @@
             </div>
         </div>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
     <script src="xuly1.js"></script>
 </body>
+
 </html>

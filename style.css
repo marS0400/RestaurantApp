@@ -1,96 +1,192 @@
-body {
-    background-color: #f0f0f0; /* Màu nền xám nhạt */
-    padding-top: 20px;
+:root {
+    --primary-dark: #0d0d0d;
+    --secondary-dark: #1a1a1a;
+    --accent-color: #8be9fd;
+    --text-light: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --card-bg: #1f1f1f;
+    --border-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.4);
 }
+
+body {
+    background-color: #f0f0f0;
+    padding-top: 0;
+    line-height: 1.6;
+}
+
+.custom-navbar {
+    background-color: var(--secondary-dark);
+    box-shadow: 0px 4px 15px var(--shadow-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+}
+
+.brand-logo {
+    color: var(--accent-color) !important;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    text-shadow: 0 0 8px rgba(139, 233, 253, 0.6);
+    transition: all 0.3s ease;
+}
+
+.brand-logo:hover {
+    color: #a6faff !important;
+    text-shadow: 0 0 12px rgba(139, 233, 253, 0.8);
+    transform: scale(1.05);
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-light) !important;
+    font-weight: 400;
+    font-size: 1.05rem;
+    padding: 0.8rem 1.2rem;
+    position: relative;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--accent-color) !important;
+    transform: translateY(-2px);
+}
+
+.navbar-nav .nav-link.active {
+    color: var(--accent-color) !important;
+    font-weight: 600;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 70%;
+}
+
+.navbar-toggler {
+    border-color: var(--border-color) !important;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+    /* Đổi màu icon sang trắng */
+}
+
 .header-section {
     text-align: center;
-    margin-bottom: 40px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    padding: 30px 20px;
+    box-shadow: none;
+    border-bottom: none;
+    margin-top: 2rem;
 }
+
 .hello-heading {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #333;
+    font-size: 3.0rem;
+    font-weight: 700;
+    color: var(--primary-dark);
     text-align: center;
 }
-.back-home-link {
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    z-index: 100;
-}
+
 .card-container-wrapper {
-    overflow: hidden; /* Ẩn phần card bị tràn ra ngoài */
+    overflow: hidden;
     position: relative;
-    padding: 10px 0; /* Thêm padding trên dưới để card không bị sát mép */
+    padding: 20px 0;
+    margin: 40px auto;
 }
+
 .card-scroll-container {
     display: flex;
-    /* Animation sẽ được gán bằng JS sau khi tính toán độ rộng */
+    flex-wrap: nowrap;
     animation-name: scroll-left;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-play-state: running;
+    will-change: transform;
 }
+
 .card-scroll-container:hover {
-    animation-play-state: paused; /* Dừng animation khi rê chuột qua */
+    animation-play-state: paused;
 }
 
-/* Animation for scrolling (needs JS to set total width for @keyframes) */
-/* Example Keyframes, width will be calculated by JS */
- @keyframes scroll-left {
-     0% { transform: translateX(0); }
-     100% { transform: translateX(var(--scroll-distance)); }
- }
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
 
+    100% {
+        transform: translateX(var(--scroll-distance));
+    }
+}
 
 .recipe-card {
-    flex: 0 0 auto; /* Quan trọng: Ngăn card co lại */
+    flex: 0 0 auto;
     flex-shrink: 0;
-    width: 250px; /* Chiều rộng cố định cho card */
+    width: 250px;
     margin-right: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    overflow: hidden; /* Quan trọng để ellipsis hoạt động và nội dung không tràn */
+    overflow: hidden;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     background-color: #fff;
 }
+
+.recipe-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(139, 233, 253, 0.3);
+}
+
 .results-grid .recipe-card {
     margin-right: 0;
-    width: auto; /* Bỏ width cố định, để grid tự quản lý */
+    width: auto;
 }
+
 .card-body {
     padding: 15px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
+
 .card-title {
     font-size: 1.1rem;
-    font-weight: bold;
+    font-weight: 600;
     margin-bottom: 10px;
-    white-space: nowrap; /* Ngăn tiêu đề quá dài xuống dòng */
-    overflow: hidden; /* Cắt bớt phần tràn */
-    text-overflow: ellipsis; /* Thêm ... vào phần bị cắt */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     cursor: pointer;
 }
+
 .ingredient-list {
     list-style: none;
     padding: 0;
     margin: 0;
     font-size: 0.9rem;
-    flex-grow: 1; /* Choán hết không gian còn lại */
-    overflow: hidden; /* Quan trọng để ẩn các li bị cắt bớt */
+    flex-grow: 1;
+    overflow: hidden;
 }
+
 .ingredient-list li {
-     white-space: nowrap; /* Ngăn tên nguyên liệu xuống dòng */
-     overflow: hidden; /* Cắt bớt phần tràn */
-     text-overflow: ellipsis; /* Thêm ... vào phần bị cắt */
-     margin-bottom: 4px;
-     line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+    line-height: 1.2;
 }
+
 .ingredient-list li:last-child {
     margin-bottom: 0;
 }
@@ -100,11 +196,12 @@ body {
     margin-top: 40px;
     margin-bottom: 40px;
 }
+
 .action-button {
     margin: 0 10px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 20px;
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    border-radius: 30px;
     border: none;
     color: #fff;
     font-weight: 500;
@@ -128,50 +225,154 @@ body {
     outline: none;
 }
 
+@media (max-width: 991.98px) {
+    .custom-navbar .container-fluid {
+        justify-content: center;
+    }
+
+    .custom-navbar .navbar-brand {
+        margin-right: 0 !important;
+    }
+
+    .custom-navbar .navbar-toggler {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1050;
+    }
+
+    .custom-navbar.navbar-collapse.show+.navbar-toggler {
+        display: block;
+    }
+
+
+}
+
+@media (max-width: 768px) {
+    .brand-logo {
+        font-size: 1.5rem;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 0.6rem 1rem;
+        text-align: center;
+    }
+
+    .navbar-nav .nav-link:hover::after,
+    .navbar-nav .nav-link.active::after {
+        width: 10%;
+    }
+
+    .hello-heading {
+        font-size: 2.5rem;
+    }
+
+    .button-section {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 15px;
+    }
+
+    .action-button {
+        width: 100%;
+        margin-bottom: 15px;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .action-button:last-child {
+        margin-bottom: 0;
+    }
+
+}
+
 .suggestion-input-section {
-    margin-top: 20px;
-    margin-bottom: 30px;
+    margin: 50px auto;
     padding: 20px;
     background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: relative; /* Đặt vị trí tương đối cho cha để dropdown tuyệt đối nằm trong nó */
-    z-index: 2; /* Đảm bảo input section nổi lên trên các phần khác nếu cần */
+    border-radius: 15px;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    position: relative;
+    border: 1px solid var(--border-color);
+    z-index: 2;
 }
- .suggestion-input-section h2 {
-     font-size: 1.5rem;
-     margin-bottom: 20px;
-     text-align: center;
- }
+
+.suggestion-input-section h2 {
+    font-size: 600;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.custom-input-group .form-control {
+    border: 1px solid var(--border-color);
+    padding: 12px 20px;
+    border-radius: 10px 0 0 10px;
+    transition: all 0.3s ease;
+}
+
+.custom-input-group .form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.custom-input-group .form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(139, 233, 253, 0.25);
+}
+
+.custom-button {
+    background-color: var(--accent-color);
+    color: var(--primary-dark);
+    font-weight: 700;
+    border-radius: 0 10px 10px 0;
+    padding: 12px 25px;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 10px rgba(139, 233, 253, 0.3);
+}
+
+.custom-button:hover {
+    background-color: #a6faff;
+    box-shadow: 0 6px 15px rgba(139, 233, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.custom-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(139, 233, 253, 0.2);
+}
 
 .ingredient-tag-input-area {
-    display: flex; /* Sử dụng flexbox để các tag và input nằm trên cùng dòng */
-    flex-wrap: wrap; /* Cho phép các tag xuống dòng khi hết chỗ */
-    align-items: center; /* Căn giữa các mục theo chiều dọc */
-    /* Kế thừa border, padding, background từ form-control */
-    min-height: calc(1.5em + 0.75rem + 2px); /* Chiều cao tối thiểu giống form-control */
-    cursor: text; /* Đổi con trỏ thành văn bản khi rê chuột */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-height: calc(1.5em + 0.75rem + 2px);
+    cursor: text;
 }
 
 /* Style cho dropdown gợi ý/autocomplete */
 .suggestions-dropdown {
-    position: absolute; /* Quan trọng để nó nổi lên */
-    z-index: 100; /* Đảm bảo nó nằm trên các phần tử khác */
-    width: calc(100% - 40px); /* Rộng bằng input group (trừ padding 20px mỗi bên của suggestion-input-section) */
-    left: 20px; /* Căn lề trái bằng padding */
-    right: 20px; /* Căn lề phải bằng padding */
-    /* top: ; */ /* Vị trí top sẽ do JS tính toán hoặc dựa vào luồng document nếu không set top */
-    /* Thường đặt ngay sau input trong HTML và dùng position: absolute; trong cha relative */
-
-
-    max-height: 150px; /* Chiều cao tối đa, thêm cuộn nếu nhiều */
-    overflow-y: auto; /* Thêm thanh cuộn dọc */
+    position: absolute;
+    z-index: 1000;
+    width: calc(100% - 60px);
+    left: 30px;
+    right: 30px;
+    max-height: 200px;
+    overflow-y: auto;
     background-color: #fff;
     border: 1px solid #ccc;
-    border-top: none; /* Không có border trên */
-    border-radius: 0 0 4px 4px; /* Bo tròn góc dưới */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    display: none; /* Mặc định ẩn */
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 8px 16px var(--shadow-color);
+    display: none;
+}
+
+.suggestions-dropdown .suggestion-item {
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.suggestions-dropdown .suggestion-item:hover {
+    background-color: rgba(139, 233, 253, 0.1);
 }
 
 .suggestions-dropdown ul {
@@ -199,78 +400,174 @@ body {
     margin-top: 15px;
     font-size: 0.9rem;
     color: #555;
-    min-height: 1.2em; /* Đảm bảo có không gian ngay cả khi trống */
+    min-height: 1.2em;
 }
+
 #suggestedIngredientsDisplay span {
-     font-weight: bold;
-     margin-right: 5px;
+    font-weight: bold;
+    margin-right: 5px;
 }
+
 #suggestedIngredientsDisplay ul {
-     list-style: none;
-     padding: 0;
-     margin: 5px 0 0 0;
-     /* display: inline; */ /* Bỏ inline display để mỗi li là một block tag */
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+    /* display: inline; */
 }
+
 #suggestedIngredientsDisplay li {
-     display: inline-block; /* Hiển thị như các tag */
-     background-color: #e9e9e9;
-     border-radius: 15px;
-     padding: 3px 10px;
-     margin: 3px;
-     word-break: break-word; /* Cho phép ngắt dòng nếu tag quá dài */
-     white-space: normal; /* Cho phép ngắt dòng */
+    display: inline-block;
+    background-color: #e9e9e9;
+    border-radius: 15px;
+    padding: 3px 10px;
+    margin: 3px;
+    word-break: break-word;
+    white-space: normal;
 }
 
 
 /* Style cho khu vực hiển thị kết quả công thức (GoiYCongThuc.html) */
 .results-section {
-    margin-top: 30px;
+    margin-top: 50px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    margin-left: auto;
+    margin-right: auto;
 }
+
 .results-grid {
     display: grid;
-    gap: 20px; /* Khoảng cách giữa các card */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Card rộng tối thiểu 250px, tự lấp đầy hàng */
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
 .season-selector {
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 30px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    border: 1px solid var(--border-color);
 }
-.season-selector .btn {
-    margin: 0 10px; /* Khoảng cách giữa các nút chọn mùa */
+
+.season-selector .season-button {
+    background-color: var(--accent-color);
+    color: var(--primary-dark);
+    font-weight: 700;
+    border-radius: 30px;
+    padding: 12px 28px;
+    box-shadow: 0 4px 15px rgba(139, 233, 253, 0.4);
+    transition: all 0.3s ease-in-out;
+    border: none;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    border-color: transparent !important;
 }
+
+.season-selector .season-button:hover {
+    background-color: #a6faff;
+    box-shadow: 0 6px 20px rgba(139, 233, 253, 0.6);
+    transform: translateY(-3px);
+}
+
+.season-selector .season-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 10px rgba(139, 233, 253, 0.3);
+}
+
+.season-selector .season-button.active-season {
+    background-color: #a6faff;
+    color: var(--primary-dark);
+    box-shadow: 0 6px 20px rgba(139, 233, 253, 0.6);
+    border: 2px solid var(--accent-color) !important;
+    transform: translateY(-3px);
+}
+
 .seasonal-results-grid {
-    margin-top: 20px;
-    display: grid;
-    gap: 20px; /* Khoảng cách giữa các card */
-    /* Định nghĩa grid columns responsive */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Card rộng tối thiểu 250px, tự lấp đầy hàng */
+    margin-top: 50px;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 8px 20px var(--shadow-color);
 }
 
-.cluster-selector {
+.cluster-selector-section {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    border: 1px solid var(--border-color);
+}
+
+.cluster-selector-section h5 {
+    color: var(--text-muted);
     text-align: center;
-    margin-top: 20px;
     margin-bottom: 30px;
+    font-weight: 400;
 }
 
-.cluster-selector label {
-    margin-right: 10px;
+.custom-cluster-input-group label {
+    color: var(--primary-dark);
     font-size: 1.1rem;
-    font-weight: bold;
+    font-weight: 500;
+    align-self: center;
 }
 
-.cluster-selector select {
-    display: inline-block; /* Đảm bảo select nằm trên cùng dòng */
-    width: auto; /* Chỉ rộng bằng nội dung */
-    min-width: 150px; /* Chiều rộng tối thiểu */
+.custom-select {
+    border: 1px solid var(--border-color);
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
 }
 
-.cluster-results-grid {
-    margin-top: 20px;
-    display: grid;
-    gap: 20px; /* Khoảng cách giữa các card */
-    /* Định nghĩa grid columns responsive */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Card rộng tối thiểu 250px, tự lấp đầy hàng */
-    justify-items: center;
+.custom-select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.25rem rgba(139, 233, 253, 0.25);
+}
+
+.custom-cluster-input-group .custom-button {
+    background-color: var(--accent-color);
+    color: var(--primary-dark);
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 10px rgba(139, 233, 253, 0.3);
+}
+
+.custom-cluster-input-group .custom-button:hover {
+    background-color: #a6faff;
+    box-shadow: 0 6px 15px rgba(139, 233, 253, 0.5);
+    transform: translateY(-2px);
+}
+
+.custom-cluster-input-group .custom-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(139, 233, 253, 0.2);
+}
+
+.custom-cluster-input-group .custom-button:disabled {
+    background-color: #555;
+    color: #bbb;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.cluster-results-section {
+    margin-top: 50px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -288,8 +288,8 @@ body {
 }
 
 .suggestion-input-section {
-    margin: 50px auto;
-    padding: 20px;
+    margin: 2rem auto;
+    padding: 25px;
     background-color: #ffffff;
     border-radius: 15px;
     box-shadow: 0 8px 20px var(--shadow-color);
@@ -304,18 +304,15 @@ body {
     text-align: center;
 }
 
-.custom-input-group .form-control {
+.suggestion-input-section .custom-input {
     border: 1px solid var(--border-color);
     padding: 12px 20px;
-    border-radius: 10px 0 0 10px;
+    border-radius: 10px;
     transition: all 0.3s ease;
 }
 
-.custom-input-group .form-control::placeholder {
-    color: var(--text-muted);
-}
-
-.custom-input-group .form-control:focus {
+.suggestion-input-section .custom-input:focus {
+    border-color: var(--accent-color);
     box-shadow: 0 0 0 0.25rem rgba(139, 233, 253, 0.25);
 }
 
@@ -323,7 +320,7 @@ body {
     background-color: var(--accent-color);
     color: var(--primary-dark);
     font-weight: 700;
-    border-radius: 0 10px 10px 0;
+    border-radius: 10px 10px 10px 10px;
     padding: 12px 25px;
     transition: all 0.3s ease;
     border: none;
@@ -353,6 +350,7 @@ body {
 .suggestions-dropdown {
     position: absolute;
     z-index: 1000;
+    top: calc(100% - 1.5rem);
     width: calc(100% - 60px);
     left: 30px;
     right: 30px;
@@ -428,8 +426,8 @@ body {
 
 /* Style cho khu vực hiển thị kết quả công thức (GoiYCongThuc.html) */
 .results-section {
-    margin-top: 50px;
-    padding: 30px;
+    margin-top: 2rem;
+    padding: 25px;
     border-radius: 15px;
     box-shadow: 0 8px 20px var(--shadow-color);
     border: 1px solid var(--border-color);
@@ -498,11 +496,12 @@ body {
 
 .cluster-selector-section {
     max-width: 800px;
-    margin: 50px auto;
+    margin: 2rem auto;
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 8px 20px var(--shadow-color);
     border: 1px solid var(--border-color);
+    text-align: center;
 }
 
 .cluster-selector-section h5 {
@@ -510,13 +509,6 @@ body {
     text-align: center;
     margin-bottom: 30px;
     font-weight: 400;
-}
-
-.custom-cluster-input-group label {
-    color: var(--primary-dark);
-    font-size: 1.1rem;
-    font-weight: 500;
-    align-self: center;
 }
 
 .custom-select {
@@ -531,39 +523,54 @@ body {
     box-shadow: 0 0 0 0.25rem rgba(139, 233, 253, 0.25);
 }
 
-.custom-cluster-input-group .custom-button {
+.cluster-selector-section .custom-select {
+    border: 1px solid var(--border-color);
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 1rem;
+    height: auto;
+}
+
+.cluster-selector-section .custom-select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.25rem rgba(139, 233, 253, 0.25);
+}
+
+.cluster-selector-section .custom-button {
     background-color: var(--accent-color);
     color: var(--primary-dark);
     font-weight: 700;
     border-radius: 10px;
-    padding: 10px 20px;
+    padding: 12px 25px;
     transition: all 0.3s ease;
     border: none;
     box-shadow: 0 4px 10px rgba(139, 233, 253, 0.3);
+    margin-top: 15px;
 }
 
-.custom-cluster-input-group .custom-button:hover {
+.cluster-selector-section .custom-button:hover:not(:disabled) {
     background-color: #a6faff;
     box-shadow: 0 6px 15px rgba(139, 233, 253, 0.5);
     transform: translateY(-2px);
 }
 
-.custom-cluster-input-group .custom-button:active {
+.cluster-selector-section .custom-button:active:not(:disabled) {
     transform: translateY(1px);
     box-shadow: 0 2px 5px rgba(139, 233, 253, 0.2);
 }
 
-.custom-cluster-input-group .custom-button:disabled {
-    background-color: #555;
-    color: #bbb;
-    box-shadow: none;
+.cluster-selector-section .custom-button:disabled {
+    background-color: var(--button-disabled-bg);
+    color: var(--button-disabled-text);
     cursor: not-allowed;
-    transform: none;
+    box-shadow: none;
 }
 
 .cluster-results-section {
-    margin-top: 50px;
-    padding: 30px;
+    margin-top: 2rem;
+    padding: 25px;
     border-radius: 15px;
     box-shadow: 0 8px 20px var(--shadow-color);
     border: 1px solid var(--border-color);

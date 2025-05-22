@@ -43,10 +43,10 @@
 
         <section class="container suggestion-input-section">
             <h2 class="text-center mb-4" style="color: var(--primary-dark);">Bạn có nguyên liệu gì?</h2>
-            <div class="input-group mb-3 custom-input-group">
-                <input type="text" class="form-control custom-input" id="ingredientInput"
+            <div class="d-flex flex-column align-items-center mb-3">
+                <input type="text" class="form-control custom-input w-100 mb-3" id="ingredientInput"
                     placeholder="Nhập tên nguyên liệu (cách nhau bằng dấu phẩy)">
-                <button class="btn btn-primary custom-button" type="button" id="getSuggestionsButton">Gợi ý
+                <button class="btn btn-primary custom-button w-100" type="button" id="getSuggestionsButton">Gợi ý
                     ngay!</button>
             </div>
             <div id="ingredientSuggestionsDropdown" class="suggestions-dropdown custom-dropdown">
@@ -57,9 +57,11 @@
             </div>
         </section>
 
-        <section class="container results-section">
+        <section class="container results-section d-none" id="resultsSection">
             <h2 class="text-center mb-4" style="color: var(--secondary-dark);">Công thức gợi ý cho bạn:</h2>
             <div class="results-grid" id="suggestionResultsGrid">
+                <p class="col-12 text-center text-muted">Không tìm thấy công thức nào. Vui lòng nhập nguyên liệu để bắt
+                    đầu.</p>
             </div>
         </section>
     </main>

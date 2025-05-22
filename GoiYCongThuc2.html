@@ -43,37 +43,39 @@
         <section class="container cluster-selector-section">
             <h5 class="text-center mb-4" style="color: var(--text-muted);">Mỗi nhóm sẽ bao gồm các món ăn gần như có sự
                 tương đồng về nguyên liệu</h5>
-            <div class="input-group mb-3 justify-content-center custom-cluster-input-group">
-                <label for="clusterSelect" class="col-form-label me-2">Chọn nhóm (1-20):</label>
-                <select id="clusterSelect" class="form-select custom-select me-2">
-                    <option value="">-- Chọn nhóm --</option>
-                    <option value="1">Nhóm 1</option>
-                    <option value="2">Nhóm 2</option>
-                    <option value="3">Nhóm 3</option>
-                    <option value="4">Nhóm 4</option>
-                    <option value="5">Nhóm 5</option>
-                    <option value="6">Nhóm 6</option>
-                    <option value="7">Nhóm 7</option>
-                    <option value="8">Nhóm 8</option>
-                    <option value="9">Nhóm 9</option>
-                    <option value="10">Nhóm 10</option>
-                    <option value="11">Nhóm 11</option>
-                    <option value="12">Nhóm 12</option>
-                    <option value="13">Nhóm 13</option>
-                    <option value="14">Nhóm 14</option>
-                    <option value="15">Nhóm 15</option>
-                    <option value="16">Nhóm 16</option>
-                    <option value="17">Nhóm 17</option>
-                    <option value="18">Nhóm 18</option>
-                    <option value="19">Nhóm 19</option>
-                    <option value="20">Nhóm 20</option>
-                </select>
-                <button class="btn btn-outline-primary custom-button" id="moreClusterRecipesButton" disabled>Hiển thị
+            <div class="d-flex flex-column align-items-center mb-3">
+                <div class="d-flex flex-column flex-md-row align-items-center w-100 mb-3"> <label for="clusterSelect"
+                        class="col-form-label me-md-2 mb-2 mb-md-0">Chọn nhóm (1-20):</label>
+                    <select id="clusterSelect" class="form-select custom-select w-100">
+                        <option value="">-- Chọn nhóm --</option>
+                        <option value="1">Nhóm 1</option>
+                        <option value="2">Nhóm 2</option>
+                        <option value="3">Nhóm 3</option>
+                        <option value="4">Nhóm 4</option>
+                        <option value="5">Nhóm 5</option>
+                        <option value="6">Nhóm 6</option>
+                        <option value="7">Nhóm 7</option>
+                        <option value="8">Nhóm 8</option>
+                        <option value="9">Nhóm 9</option>
+                        <option value="10">Nhóm 10</option>
+                        <option value="11">Nhóm 11</option>
+                        <option value="12">Nhóm 12</option>
+                        <option value="13">Nhóm 13</option>
+                        <option value="14">Nhóm 14</option>
+                        <option value="15">Nhóm 15</option>
+                        <option value="16">Nhóm 16</option>
+                        <option value="17">Nhóm 17</option>
+                        <option value="18">Nhóm 18</option>
+                        <option value="19">Nhóm 19</option>
+                        <option value="20">Nhóm 20</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary custom-button" id="moreClusterRecipesButton" disabled>Hiển thị
                     thêm</button>
             </div>
             <div id="clusterRecipeCountInfo" class="text-center text-muted mt-2"></div>
         </section>
-        <section class="container cluster-results-section">
+        <section class="container cluster-results-section" id="clusterResultsSection">
             <h2 class="text-center mb-4" style="color: var(--primary-dark);">Món ăn trong nhóm đã chọn:</h2>
             <div id="clusterResultsGrid" class="cluster-results-grid results-grid">
                 <p class="col-12 text-center" style="color: var(--text-muted);">Chọn một nhóm từ danh sách để xem các

@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const moreClusterRecipesButton = document.getElementById('moreClusterRecipesButton');
     const clusterRecipeCountInfo = document.getElementById('clusterRecipeCountInfo');
     const clusterResultsGrid = document.getElementById('clusterResultsGrid');
+    const clusterResultsSection = document.getElementById('clusterResultsSection');
 
     const recipeModalElement = document.getElementById('recipeModal');
     let recipeModal = null;
@@ -123,6 +124,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!currentClusterRecipeIds || currentClusterRecipeIds.length === 0) {
             clusterResultsGrid.innerHTML = '<p class="col-12 text-center">Không tìm thấy công thức nào trong cụm này.</p>';
             updateCountInfo();
+            if (clusterResultsSection) {
+                clusterResultsSection.classList.remove('d-none');
+            }
             return;
         }
 
@@ -149,6 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         updateCountInfo();
 
+        if (clusterResultsSection) {
+            clusterResultsSection.classList.remove('d-none');
+        }
+
         if (currentClusterRecipeIds.length > 0) {
             moreClusterRecipesButton.disabled = false;
         } else {
@@ -163,6 +171,9 @@ document.addEventListener('DOMContentLoaded', () => {
         clusterSelect.disabled = true;
         moreClusterRecipesButton.disabled = true;
 
+        if (clusterResultsSection) {
+            clusterResultsSection.classList.add('d-none');
+        }
 
         Promise.all([fetchRecipes(), fetchRecipeClusters()])
             .then(([recipes, clusters]) => {
@@ -182,6 +193,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 clusterSelect.addEventListener('change', (event) => {
                     const selectedCluster = event.target.value;
+
+                    if (clusterResultsSection) {
+                        clusterResultsSection.classList.add('d-none');
+                    }
 
                     clusterResultsGrid.innerHTML = '';
                     currentClusterRecipeIds = [];

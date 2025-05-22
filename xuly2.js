@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const suggestionResultsGrid = document.getElementById('suggestionResultsGrid');
     const suggestedIngredientsDisplay = document.getElementById('suggestedIngredientsDisplay');
     const ingredientSuggestionsDropdown = document.getElementById('ingredientSuggestionsDropdown');
+    const resultsSection = document.getElementById('resultsSection');
 
     const recipeModalElement = document.getElementById('recipeModal');
     let recipeModal = null;
@@ -290,8 +291,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (lastCommaIndex === -1) {
                         newValue = selectedIngredient + ', ';
                     } else {
-                        const beforeComma = currentValue.substring(0, lastCommaIndex + 1);
-                        newValue = beforeComma + selectedIngredient + ', ';
+                        const beforeComma = currentValue.substring(0, lastCommaIndex + 1).trim();
+                        newValue = beforeComma + ' ' + selectedIngredient + ', ';
                     }
                     ingredientInput.value = newValue;
 
@@ -327,6 +328,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getSuggestions() {
+        if (resultsSection) {
+            resultsSection.classList.add('d-none');
+        }
+        if (suggestionResultsGrid) {
+            suggestionResultsGrid.innerHTML = '<p class="col-12 text-center text-muted">Đang tìm kiếm công thức...</p>';
+        }
+
         const input = ingredientInput.value.trim();
         const inputIngredients = input.split(',')
             .map(item => item.trim())
@@ -369,6 +377,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const card = createRecipeCard(recipe);
                     suggestionResultsGrid.appendChild(card);
                 });
+            }
+
+            if (resultsSection) {
+                resultsSection.classList.remove('d-none');
             }
         }
     }

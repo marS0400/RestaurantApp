@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const seasonalResultsGrid = document.getElementById('seasonalResultsGrid');
+    const seasonalResultsSection = document.getElementById('seasonalResultsSection');
     const seasonButtons = document.querySelectorAll('.season-selector .btn');
 
     const recipeModalElement = document.getElementById('recipeModal');
@@ -46,6 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error fetching recipes:', error);
             if (seasonalResultsGrid) {
                 seasonalResultsGrid.innerHTML = '<p class="text-danger col-12 text-center">Không thể tải dữ liệu món ăn.</p>';
+                if (seasonalResultsSection) {
+                    seasonalResultsSection.classList.add('d-none');
+                }
             }
             return [];
         }
@@ -131,6 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = createRecipeCard(recipe);
             seasonalResultsGrid.appendChild(card);
         });
+
+        if (seasonalResultsSection) {
+            seasonalResultsSection.classList.remove('d-none');
+        }
     }
 
     function shuffleArray(array) {
@@ -167,6 +175,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (seasonalResultsGrid) {
                 seasonalResultsGrid.innerHTML = `<p class="col-12 text-center">Không tìm thấy công thức nào phù hợp với mùa "${selectedSeason}" trong dữ liệu.</p>`;
             }
+            if (seasonalResultsSection) {
+                seasonalResultsSection.classList.remove('d-none');
+            }
             return;
         }
 
@@ -178,6 +189,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (seasonalResultsGrid && seasonButtons && seasonButtons.length > 0) {
+        if (seasonalResultsSection) {
+            seasonalResultsSection.classList.add('d-none');
+        }
         seasonalResultsGrid.innerHTML = '<p class="col-12 text-center text-muted">Đang tải dữ liệu món ăn...</p>';
 
         fetchRecipes()
@@ -194,6 +208,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (selectedSeason) {
                             seasonButtons.forEach(btn => btn.classList.remove('active'));
                             button.classList.add('active');
+                            if (seasonalResultsSection) {
+                                seasonalResultsSection.classList.add('d-none');
+                            }
 
                             filterAndDisplayBySeason(selectedSeason);
                         }
